@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "onlineecommapp"
+  "defaultProject": "onlineecommapp",
+  "cli": {
+    "analytics": false
+  }
 }

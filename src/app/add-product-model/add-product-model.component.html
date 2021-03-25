@@ -1,0 +1,68 @@
+<p>add-product-model works!</p>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Add Product</h4>
+    <div class="alert alert-info alert-dismissable" role="alert" 
+            *ngIf="formSubmitted">
+        <button type="button" class="close" data-dismissable="alert"
+         aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <strong>Hurray!!!! Product added Successfully.....</strong>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+    <form novalidate [formGroup]="addProductForm">
+        <div class="form-group">
+            <label for="id">id</label>
+            <input type="text" class="form-control" id="id" placeholder="Enter id">
+        </div>
+        <div class="form-group">
+            <label for="title">title</label>
+            <input type="text" class="form-control" 
+                formControlName="title" id="title" 
+                placeholder="Enter title">
+            <div class="alert alert-danger" role="alert" 
+                *ngIf="title.errors && (title.touched || title.dirty)">
+                    Invalid title                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="type">type</label>
+            <input type="text" class="form-control"  
+            formControlName="type" id="type" placeholder="Enter type"
+            [ngClass]="{'is-invalid': type.errors && (type.touched || type.dirty),'is-valid':type.valid}">
+            <div class="invalid-feedback">
+                <strong>Invalid type</strong>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="weight">weight</label>
+            <input type="text" class="form-control" id="weight" placeholder="Enter weight">
+        </div>
+        <div class="form-group">
+            <label for="productType">productType</label>
+            <select class="form-control">
+                <option *ngFor="let pt of productTypes" [value]="pt">{{pt}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="brand">brand</label>
+            <input type="text" class="form-control" id="brand" placeholder="Enter brand">
+        </div>
+        <div class="form-group">
+            <label for="price">price</label>
+            <input type="text" class="form-control" id="price" placeholder="Enter price">
+        </div>
+        <button type="submit"  (click)="addProduct(addProductForm.value)" class="btn btn-primary">Submit</button>
+        <button class="btn btn-default" (click)="addProductForm.reset()">Reset</button>
+    </form>
+            </div>
+            <div class="col-md-6">
+                <label> <strong>myForm : JSON</strong></label>
+                <pre class="alert alert-dark">{{addProductForm.value}}</pre>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<p>registration works!</p>
+<h4>New Customer SignUp</h4>
+<div class="col-md-12 ">
+<div class="col-md-6">
+    <form #registrationForm="ngForm" novalidate>
+        <div class="form-group">
+            <label for="custName">Name</label>
+            <input type="text" class="form-control" name="custName" 
+            [(ngModel)]="customer.custName" placeholder="Enter name" #custName="ngModel"
+            [ngClass] = "{'is-invalid':custName?.errors && 
+            (custName?.touched || custName?.dirty),
+            'is-valid':custName?.valid}">
+            <div class="invalid-feedback">
+                <strong *ngIf="custName?.errors?.required">
+                    Customer Name is Required</strong>
+                <strong *ngIf="custName?.errors?.minlength">
+                    Custname cannot be less than 5 character
+                </strong> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="custEmail">Email</label>
+            <input type="text" class="form-control" name="custEmail" 
+            [(ngModel)]="customer.custEmail" placeholder="Enter email" 
+            #custEmail="ngModel">
+        </div>
+        <div class="form-group">
+            <label for="custMobile">MobileNo </label>
+            <input type="number" class="form-control" name="custMobile" 
+            [(ngModel)]="customer.custMobile" placeholder="Enter mobileno" 
+            #custMobile="ngModel">
+        </div>
+        <div class="form-group">
+            <label for="custPassword">Password </label>
+            <input type="text" class="form-control" name="custPassword" 
+            [(ngModel)]="customer.custPassword" placeholder="Enter password" 
+            #custPassword="ngModel">
+        </div>
+        <button type="submit" class="btn btn-primary" 
+        (click)="displayCustomerDetails()">Submit</button>
+    </form>
+</div>
+<div class="col-md-6">
+    <label>
+     <strong>Customer Details : JSON</strong>
+</label>
+<pre class="alert alert-info">{{customer | json}}</pre>
+</div>
+</div>

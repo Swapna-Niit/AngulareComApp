@@ -1,0 +1,31 @@
+<p>product works!</p>
+<p>products works!</p>
+<div class="card bg-secondary text-white" >
+    <div class="card-body">
+      <h4 class="card-title">{{product.title}}</h4>
+      <h5 class="card-text">{{product.price | currency:'INR'}}</h5>
+    </div>
+    <table class="table">
+        <tr>
+            <td scope="row">
+                <b>Product Type</b>
+            </td>
+            <td>
+                <i class="fa fa-star-o" aria-hidden="true" 
+                *ngIf="product.productType=='Spices'">
+                </i>
+                <i class="fa fa-square-o" aria-hidden="true" 
+                *ngIf="product.productType=='Ready To Cook'">
+                </i>
+            </td>
+        </tr>
+        <td scope="row">
+            <b>Brand</b>
+        </td>
+        <td>{{product.brand}}</td>
+    </table>
+    <div class="card-footer text-muted">
+        <button type="button" class="btn btn-danger" (click)="delete()">Remove</button>
+        <button type="button" class="btn btn-light" [routerLink]="['/products',product.id]">Detail</button>
+    </div>
+  </div>

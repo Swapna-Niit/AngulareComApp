@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'onlineecommapp';
+  name : string = 'Hexaware';
+  city : string = 'Chennai';
 }
