@@ -14,16 +14,21 @@ export class ProductsComponent implements OnInit {
   //creating an product array
   products : Product [] = [];
   constructor(public productService:ProductService) { 
-      this.products = productService.getProducts();
+      
       console.log(this.products);
   }
   ngOnInit(): void {
+    this.productService.getProducts().subscribe(
+      products => this.products = products
+    );
   }
   
 deleteProduct(product:Product) {
   this.productService.deleteProduct(product);
   //after deleting this line updates the products array
-  this.products = this.productService.getProducts();
+   this.productService.getProducts().subscribe(
+    products => this.products = products
+  );
 }
 
 

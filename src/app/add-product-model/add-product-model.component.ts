@@ -13,6 +13,8 @@ export class AddProductModelComponent implements OnInit {
 
   productTypes = ['Staples','Ready To Cook','Pulses'];
 
+  product : Product = new Product();
+
   addProductForm: FormGroup;
 
   id:FormControl;
@@ -53,8 +55,16 @@ export class AddProductModelComponent implements OnInit {
   }
 
   addProduct(product:Product) {
-    this.productService.addProduct(product);
-    this.formSubmitted = true;
-    this.router.navigateByUrl('/products');
+    //this.productService.addProduct(product);
+    this.productService.addProduct(this.product).subscribe( 
+      data => {
+        console.log(data)
+        this.product = new Product()
+        this.router.navigateByUrl('/products')
+        },
+        error => console.log(error)
+       );
+    this.formSubmitted = true; 
   }
+  
 }

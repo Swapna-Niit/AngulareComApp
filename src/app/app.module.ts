@@ -13,6 +13,7 @@ import { ContactService } from './contact.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { LayoutModule } from './layout/layout.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
   ],
   providers: [
     ProductService,

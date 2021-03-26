@@ -22,8 +22,10 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     let pid:number = Number(this.activatedRoute.snapshot.
       paramMap.get('prodid'));
-    alert("selected product = "+pid);
-    this.product = this.productService.getProductById(pid);
+    //alert("selected product = "+pid);
+    this.productService.getProductById(pid).subscribe(
+      product=> this.product = product
+    );
   }
 
   goBack() {
